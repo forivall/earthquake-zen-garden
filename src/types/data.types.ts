@@ -1,4 +1,7 @@
 // Generated with https://typegen.vestera.as/
+// And modified to use the proper geojson typings
+
+import type { FeatureCollection, Point } from 'geojson';
 
 export interface RootData {
   site: SiteData;
@@ -21,11 +24,8 @@ export interface ProfileData {
   bio: string;
 }
 
-export interface EarthquakeData {
-  type: string;
+export interface EarthquakeData extends FeatureCollection<Point, Properties> {
   metadata: Metadata;
-  features: Feature[];
-  bbox: number[];
 }
 
 export interface Metadata {
@@ -35,13 +35,6 @@ export interface Metadata {
   status: number;
   api: string;
   count: number;
-}
-
-export interface Feature {
-  type: string;
-  properties: Properties;
-  geometry: Geometry;
-  id: string;
 }
 
 export interface Properties {
@@ -71,9 +64,4 @@ export interface Properties {
   magType: string;
   type: string;
   title: string;
-}
-
-export interface Geometry {
-  type: string;
-  coordinates: number[];
 }
