@@ -1,0 +1,16 @@
+.appHeader {
+  display: flex;
+  color: var(--zen-header-fg);
+  background-color: var(--zen-header-bg);
+  padding: 0 1rem;
+
+  /* NOTE: this doesnt properly centre the title text, rather, it mimics the
+  imperfect centering in the reference screens */
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.logo {
+  max-height: 3rem;
+}

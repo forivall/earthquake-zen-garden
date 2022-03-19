@@ -1,5 +1,4 @@
-
 // : import('webpack').Config
-const config = {}
+const config = {};
 
 export default config;

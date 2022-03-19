@@ -5,36 +5,45 @@ const rules = {
   'capitalized-comments': ['off'],
   'no-eq-null': ['off'],
 };
-/** @type {Partial<import('eslint').Linter.RulesRecord>} */
-const tsRules = {
-  ...rules,
-  '@typescript-eslint/consistent-indexed-object-style': [
-    'error',
-    'index-signature',
-  ],
-  '@typescript-eslint/padding-line-between-statements': ['off'],
+/** @type {{ rules: import('eslint').Linter.RulesRecord, extends: string[] }} */
+const tsOverrideConfig = {
+  extends: ['xo', 'xo-typescript', 'prettier', 'plugin:prettier/recommended'],
+  rules: {
+    ...rules,
+    '@typescript-eslint/consistent-indexed-object-style': [
+      'error',
+      'index-signature',
+    ],
+    '@typescript-eslint/padding-line-between-statements': ['off'],
+    '@typescript-eslint/ban-types': ['error', {}],
+  },
 };
+
 /** @type {import('eslint').Linter.Config} */
 const config = {
   extends: ['xo', 'prettier', 'plugin:prettier/recommended'],
-  parserOptions: {
-    project: false,
-  },
   rules,
-
   overrides: [
     {
-      files: ['src/**/*.ts'],
+      files: ['vite.config.ts'],
+      parserOptions: {
+        project: 'tsconfig.json',
+      },
+      ...tsOverrideConfig,
+    },
+    {
+      files: ['src/**/*.{ts,tsx}'],
       parserOptions: {
         project: 'src/tsconfig.json',
       },
-      extends: [
-        'xo',
-        'xo-typescript',
-        'prettier',
-        'plugin:prettier/recommended',
-      ],
-      rules: tsRules,
+      ...tsOverrideConfig,
+    },
+    {
+      files: ['config/**/*.ts'],
+      parserOptions: {
+        project: 'config/tsconfig.json',
+      },
+      ...tsOverrideConfig,
     },
     {
       files: ['*.config.js'],

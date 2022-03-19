@@ -1,7 +1,9 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "@tsconfig/vite-react/tsconfig.json",
   "compilerOptions": {
-    "outDir": "../.cache/tsc/src"
+    "composite": true,
+    "outDir": "../.cache/tsc/out/src",
+    "noEmit": false
   },
   "include": [
     "./**/*"
