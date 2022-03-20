@@ -1,6 +1,7 @@
 import React from 'react';
-import { ProfileData, SiteData } from '../../types/data.types';
-import styles from './AppHeader.module.css';
+import { Link } from 'react-router-dom';
+import { ProfileData, SiteData } from '../types/data.types';
+import styles from './App.module.css';
 
 interface Props {
   site: SiteData;
@@ -11,12 +12,12 @@ const AppHeader: React.VFC<Props> = (props) => {
   const { site, profile } = props;
   return (
     <header className={styles.appHeader}>
-      <a href="/">
+      <Link to="/">
         <img className={styles.logo} src={site.logoImage} />
-      </a>
+      </Link>
       <h1 className={styles.siteTitle}>{site.title}</h1>
       <nav>
-        <a href="/profile">Welcome, {profile.firstName}</a>
+        <Link to="/profile">Welcome, {profile.firstName}</Link>
       </nav>
     </header>
   );

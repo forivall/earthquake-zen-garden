@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { RootData } from '../../types/data.types';
-import Header from '../AppHeader/AppHeader';
+import React from 'react';
+import { RootData } from '../types/data.types';
+import AppRouting from './AppRouting';
 
 // NOTE: a library should be used in a real-world scenario
 const useFetchData = (): [RootData?, Error?] => {
   const [data, setData] = React.useState<RootData>();
   const [err, setErr] = React.useState<Error>();
 
-  useEffect(() => {
+  React.useEffect(() => {
     async function fetchData() {
       const response = await fetch('/data.json');
       const json = (await response.json()) as RootData;
@@ -34,17 +34,7 @@ const App: React.VFC = () => {
     );
   }
 
-  if (!data) {
-    // loading
-    return <React.Fragment />;
-  }
-
-  return (
-    <>
-      <Header site={data.site} profile={data.profile} />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </>
-  );
+  return <AppRouting data={data} err={err} />;
 };
 
 export default App;

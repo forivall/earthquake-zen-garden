@@ -37,6 +37,7 @@ const config = {
         project: 'src/tsconfig.json',
       },
       ...tsOverrideConfig,
+      extends: [...tsOverrideConfig.extends, 'plugin:react-hooks2/recommended'],
     },
     {
       files: ['config/**/*.ts'],
