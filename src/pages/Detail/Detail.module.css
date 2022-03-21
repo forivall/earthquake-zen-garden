@@ -1,0 +1,22 @@
+.detailsGrid {
+  /* fallback to flex when grid is not supported */
+  display: flex;
+  flex-wrap: wrap;
+
+  display: grid;
+  grid-template-columns: 12ch 1fr;
+
+}
+.detailsGrid dt {
+  flex: 0 0 12ch;
+
+  font-weight: bold;
+  grid-column: 1;
+}
+.detailsGrid dd {
+  margin-inline-start: 0;
+  flex: 1 0 calc(max(100% - 12ch, 12ch));
+
+  grid-column: 2;
+  padding-bottom: 0.1em;
+}

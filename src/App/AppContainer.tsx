@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './AppHeader';
 import { AppDataProps } from './App.types';
+import styles from './App.module.css';
 
 const AppContainer: React.VFC<AppDataProps> = (props) => {
   const { data, err } = props;
@@ -23,8 +24,9 @@ const AppContainer: React.VFC<AppDataProps> = (props) => {
   return (
     <>
       <Header site={data.site} profile={data.profile} />
-      <Outlet />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <main className={styles.appMain}>
+        <Outlet />
+      </main>
     </>
   );
 };

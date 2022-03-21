@@ -1,0 +1,9 @@
+/* Presentational styles */
+.textCenter {
+  text-align: center;
+}
+
+/* Semantic styles */
+.earthquakeTable {
+  width: 100%;
+}

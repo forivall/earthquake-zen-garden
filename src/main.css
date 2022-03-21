@@ -1,7 +1,14 @@
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+dl, figure {
+  margin: 0;
+}
+
 :root {
   --zen-header-bg: #ededed;
   --zen-header-fg: #777777;
-  --zen-text: #444444;
+  --zen-heading-fg: #444444;
   --zen-link-fg: #0011bb;
   --zen-link-visited: #6600cc;
 }
@@ -9,6 +16,10 @@
 body {
   font-family: sans-serif;
   margin: 0;
+}
+
+h3 {
+  color: var(--zen-heading-fg);
 }
 
 a {

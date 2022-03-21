@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { EarthquakeData } from '../../types/data.types';
+import styles from './Index.module.css';
 
 interface Props {
   data: EarthquakeData;
@@ -11,7 +12,7 @@ interface Props {
 const EarthquakeTable: React.VFC<Props> = (props) => {
   const { data } = props;
   return (
-    <table>
+    <table className={styles.earthquakeTable}>
       <thead>
         <tr>
           <th>Title</th>
@@ -27,7 +28,7 @@ const EarthquakeTable: React.VFC<Props> = (props) => {
               <td>
                 <Link to={`/earthquake/${id}`}>{feature.properties.place}</Link>
               </td>
-              <td>{feature.properties.mag}</td>
+              <td className={styles.textCenter}>{feature.properties.mag}</td>
               {/* TODO: format time */}
               <td>{feature.properties.time}</td>
             </tr>

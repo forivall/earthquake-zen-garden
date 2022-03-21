@@ -1,5 +1,6 @@
 import React from 'react';
-import { ProfileData, } from '../../types/data.types';
+import { ProfileData } from '../../types/data.types';
+import styles from './Profile.module.css';
 
 interface Props {
   profile: ProfileData;
@@ -10,7 +11,7 @@ interface Props {
 const ProfileDetails: React.VFC<Props> = (props) => {
   const { profile } = props;
   return (
-    <dl>
+    <dl className={styles.profileGrid}>
       <dt>First name</dt>
       <dd>{profile.firstName}</dd>
       <dt>Last name</dt>

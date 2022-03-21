@@ -27,14 +27,19 @@ const selectById = (
 
 const useSelectById = memoUse(selectById);
 
-const Detail: React.VFC<Props> = (props) => {
+const DetailPageContainer: React.VFC<Props> = (props) => {
   const { data } = props;
   const { id } = useParams();
   const geoFeature = useSelectById(data, id);
 
   if (!geoFeature) return <React.Fragment />;
 
-  return <EarthquakeDetails geoFeature={geoFeature} />;
+  return (
+    <>
+      <h3>{geoFeature.properties.title}</h3>
+      <EarthquakeDetails geoFeature={geoFeature} />
+    </>
+  );
 };
 
-export default Detail;
+export default DetailPageContainer;

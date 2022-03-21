@@ -1,6 +1,7 @@
 import { Feature, Point } from 'geojson';
 import React from 'react';
 import { Properties } from '../../types/data.types';
+import styles from './Detail.module.css';
 
 interface Props {
   geoFeature: Feature<Point, Properties>;
@@ -12,7 +13,7 @@ const EarthquakeDetails: React.VFC<Props> = (props) => {
   const { geoFeature } = props;
   const earthquake = geoFeature.properties;
   return (
-    <dl>
+    <dl className={styles.detailsGrid}>
       <dt>Title</dt>
       <dd>{earthquake.title}</dd>
       <dt>Magnitude</dt>

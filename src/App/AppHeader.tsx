@@ -12,9 +12,11 @@ const AppHeader: React.VFC<Props> = (props) => {
   const { site, profile } = props;
   return (
     <header className={styles.appHeader}>
-      <Link to="/">
-        <img className={styles.logo} src={site.logoImage} />
-      </Link>
+      <nav className={styles.iconNav}>
+        <Link to="/">
+          <img className={styles.logo} src={site.logoImage} />
+        </Link>
+      </nav>
       <h1 className={styles.siteTitle}>{site.title}</h1>
       <nav>
         <Link to="/profile">Welcome, {profile.firstName}</Link>
