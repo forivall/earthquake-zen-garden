@@ -14,6 +14,21 @@
   font-size: 0.875em;
   font-weight: normal;
 }
+.sortableTh {
+  cursor: pointer;
+}
+.sortableTh[aria-sort="descending"]::after {
+  content: '\00a0\02C5'; /* MODIFIER LETTER DOWN ARROWHEAD */
+}
+.sortableTh[aria-sort="ascending"]::after {
+  content: '\00a0\02C4'; /* MODIFIER LETTER UP ARROWHEAD */
+}
+.sortableTh::after {
+  width: 0;
+  overflow: visible;
+  display: inline-block;
+  color: var(--zen-light-fg);
+}
 .earthquakeTable td {
   font-weight: 500;
   padding-left: 0.5rem;
