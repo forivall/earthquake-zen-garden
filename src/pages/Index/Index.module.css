@@ -16,4 +16,6 @@
 }
 .earthquakeTable td {
   font-weight: 500;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }

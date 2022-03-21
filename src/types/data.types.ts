@@ -1,7 +1,7 @@
-// Generated with https://typegen.vestera.as/
+// Initially generated with https://typegen.vestera.as/
 // And modified to use the proper geojson typings
 
-import type { FeatureCollection, Point } from 'geojson';
+import type { Feature, FeatureCollection, Point } from 'geojson';
 
 export interface RootData {
   site: SiteData;
@@ -27,6 +27,8 @@ export interface ProfileData {
 export interface EarthquakeData extends FeatureCollection<Point, Properties> {
   metadata: Metadata;
 }
+
+export type EarthquakeFeature = Feature<Point, Properties>;
 
 export interface Metadata {
   generated: number;

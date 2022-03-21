@@ -1,16 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { EarthquakeData } from '../../types/data.types';
+import type { EarthquakeFeatureFormatted } from '../../helpers/formatting';
+import { formatEarthquakeFeature } from '../../helpers/formatting';
+import { EarthquakeData, EarthquakeFeature } from '../../types/data.types';
 import styles from './Index.module.css';
 
 interface Props {
   data: EarthquakeData;
 }
 
-// const useSorting = () => {};
+interface EarthquakeFeatureWithFormatted extends EarthquakeFeature {
+  formatted: EarthquakeFeatureFormatted;
+}
+
+type TableStateReturn = [EarthquakeFeatureWithFormatted[]];
+
+const useTableState = (features: EarthquakeFeature[]): TableStateReturn => {
+  const formatted = React.useMemo(
+    () =>
+      features.map((f) => ({ ...f, formatted: formatEarthquakeFeature(f) })),
+    [features]
+  );
+
+  return [formatted];
+};
 
 const EarthquakeTable: React.VFC<Props> = (props) => {
   const { data } = props;
+
+  const [features] = useTableState(data.features);
+
   return (
     <table className={styles.earthquakeTable}>
       <thead>
@@ -21,7 +40,7 @@ const EarthquakeTable: React.VFC<Props> = (props) => {
         </tr>
       </thead>
       <tbody>
-        {data.features.map((feature, i) => {
+        {features.map((feature, i) => {
           const id = feature.id ?? `__index__${i}`;
           return (
             <tr key={id}>
@@ -29,8 +48,11 @@ const EarthquakeTable: React.VFC<Props> = (props) => {
                 <Link to={`/earthquake/${id}`}>{feature.properties.place}</Link>
               </td>
               <td className={styles.textCenter}>{feature.properties.mag}</td>
-              {/* TODO: format time */}
-              <td>{feature.properties.time}</td>
+              <td
+                title={`${feature.formatted.timeIso}\nLocal time: ${feature.formatted.timeLocal}`}
+              >
+                {feature.formatted.time}
+              </td>
             </tr>
           );
         })}
