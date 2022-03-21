@@ -7,3 +7,13 @@
 .earthquakeTable {
   width: 100%;
 }
+
+.earthquakeTable th {
+  /* The specification screenshot has these styles */
+  color: black;
+  font-size: 0.875em;
+  font-weight: normal;
+}
+.earthquakeTable td {
+  font-weight: 500;
+}

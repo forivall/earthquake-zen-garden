@@ -1,6 +1,6 @@
 .appHeader {
   display: flex;
-  color: var(--zen-header-fg);
+  color: var(--zen-light-fg);
   background-color: var(--zen-header-bg);
   padding: 0 1rem;
 
