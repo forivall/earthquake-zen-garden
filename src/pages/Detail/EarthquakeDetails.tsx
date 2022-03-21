@@ -14,7 +14,7 @@ const EarthquakeDetails: React.VFC<Props> = (props) => {
   const { geoFeature } = props;
   const earthquake = geoFeature.properties;
 
-  const formatted = formatEarthquakeFeature(geoFeature);
+  const formatted = useFormatted(geoFeature);
 
   return (
     <dl className={styles.detailsGrid}>

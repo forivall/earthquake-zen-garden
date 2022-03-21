@@ -15,7 +15,6 @@
 
   display: grid;
   grid-template-columns: 12ch 1fr;
-
 }
 .profileGrid dt {
   flex: 0 0 12ch;
